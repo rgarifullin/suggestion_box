@@ -1,0 +1,27 @@
+p#notice
+  = notice
+h1
+  | Listing Suggestions
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Text
+      th[colspan="3"]
+  tbody
+    - @suggestions.each do |suggestion|
+      tr
+        td
+          = suggestion.title
+        td
+          = suggestion.text
+        td
+          = link_to 'Show', suggestion
+        td
+          = link_to 'Edit', edit_suggestion_path(suggestion)
+        td
+          = link_to 'Destroy', suggestion, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Suggestion', new_suggestion_path

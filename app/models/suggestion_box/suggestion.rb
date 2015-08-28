@@ -1,0 +1,5 @@
+module SuggestionBox
+  class Suggestion < ActiveRecord::Base
+    belongs_to :user
+  end
+end

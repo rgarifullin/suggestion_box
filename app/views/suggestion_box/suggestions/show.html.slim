@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Title:
+  = @suggestion.title
+p
+  strong
+    | Text:
+  = @suggestion.text
+= link_to 'Edit', edit_suggestion_path(@suggestion)
+|  | 
+= link_to 'Back', suggestions_path

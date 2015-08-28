@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.4"
   s.add_dependency "slim-rails"
+  s.add_dependency "acts_as_commentable"
 
   s.add_development_dependency "sqlite3"
 end

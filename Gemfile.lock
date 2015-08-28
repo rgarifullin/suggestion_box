@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     suggestion_box (0.0.1)
+      acts_as_commentable
       rails (~> 4.2.4)
       slim-rails
 
@@ -43,6 +44,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_commentable (4.0.2)
     arel (6.0.3)
     builder (3.2.2)
     erubis (2.7.0)
@@ -106,7 +108,7 @@ GEM
     temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (1.4.1)
+    tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
 

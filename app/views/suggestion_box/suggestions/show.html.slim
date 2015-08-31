@@ -17,4 +17,4 @@ h4
 #comments
   = render @suggestion.comments
 
-= render partial: 'suggestion_box/comments/form', locals: {comment: @comment}
+= render partial: 'suggestion_box/comments/form', locals: {commentable: @suggestion}

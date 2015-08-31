@@ -9,6 +9,7 @@ module SuggestionBox
     end
 
     def show
+      @comment = @suggestion.comments.new
     end
 
     def new

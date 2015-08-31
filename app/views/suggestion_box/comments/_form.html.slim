@@ -1,0 +1,7 @@
+= simple_form_for [comment.commentable, comment], remote: true do |f|
+  = f.input :comment, label: false, input_html: { class: 'form-control' }, placeholder: 'Введите комментарий'
+  = f.hidden_field :commentable_id, value: comment.commentable.id
+  = f.hidden_field :commentable_type, value: comment.commentable.class
+
+  = button_tag type: :submit, class: 'btn btn-success' do
+    span Отправить

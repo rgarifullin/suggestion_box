@@ -18,6 +18,12 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "slim-rails"
+  s.add_dependency "acts_as_commentable"
+  s.add_dependency "simple_form"
+  s.add_dependency "jquery-rails", "~> 3.1.1"
+  s.add_development_dependency "byebug"
+  s.add_dependency "devise"
 
   s.add_development_dependency "sqlite3"
 end

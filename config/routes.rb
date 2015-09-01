@@ -1,3 +1,7 @@
 SuggestionBox::Engine.routes.draw do
-  resources :suggestions
+  root to: 'suggestions#index'
+
+  resources :suggestions do
+    resources :comments
+  end
 end

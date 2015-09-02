@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-rails", "~> 3.1.1"
   s.add_development_dependency "byebug"
   s.add_dependency "devise"
+  s.add_dependency 'acts_as_votable', '~> 0.10.0'
+  s.add_dependency "font-awesome-rails"
 
   s.add_development_dependency "sqlite3"
 end

@@ -5,6 +5,8 @@ require 'simple_form'
 require 'jquery-rails'
 require 'byebug'
 require 'devise'
+require 'acts_as_votable'
+require 'font-awesome-rails'
 
 module SuggestionBox
 end

@@ -1,5 +1,3 @@
-p#notice
-  = notice
 p
   strong
     | Title:
@@ -12,9 +10,9 @@ p
   strong
     | Author:
   = @suggestion.author.try(:email)
-= link_to 'Edit', edit_suggestion_path(@suggestion)
+= link_to 'Edit', suggestion_box.edit_suggestion_path(@suggestion)
 |  |
-= link_to 'Back', suggestions_path
+= link_to 'Back', suggestion_box.suggestions_path
 
 h4
   | Комментарии

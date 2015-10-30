@@ -1,4 +1,4 @@
-= form_for(@suggestion) do |f|
+= form_for @suggestion, url: suggestion_box.suggestion_path(@suggestion) do |f|
   - if @suggestion.errors.any?
     #error_explanation
       h2

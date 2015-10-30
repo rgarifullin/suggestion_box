@@ -1,4 +1,15 @@
 h1
   | New Suggestion
-= render 'form'
-= link_to 'Back', suggestions_path
+= form_for SuggestionBox::Suggestion.new, url: suggestion_box.suggestions_path do |f|
+  .field
+    = f.label :title
+    br
+    = f.text_field :title
+  .field
+    = f.label :text
+    br
+    = f.text_area :text
+  = f.hidden_field :author_id, value: current_user.try(:id)
+  .actions
+    = f.submit
+= link_to 'Back', suggestion_box.suggestions_path

@@ -6,8 +6,8 @@ PATH
       acts_as_votable (~> 0.10.0)
       devise
       font-awesome-rails
-      jquery-rails (~> 3.1.1)
-      rails (~> 4.2.4)
+      jquery-rails
+      rails (~> 4.2.0)
       simple_form
       slim-rails
 
@@ -149,4 +149,4 @@ DEPENDENCIES
   suggestion_box!
 
 BUNDLED WITH
-   1.10.5
+   1.10.6

@@ -9,4 +9,5 @@ require 'acts_as_votable'
 require 'font-awesome-rails'
 
 module SuggestionBox
+  mattr_accessor :author_class
 end

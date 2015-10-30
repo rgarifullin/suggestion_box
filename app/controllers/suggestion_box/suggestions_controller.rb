@@ -48,7 +48,7 @@ module SuggestionBox
     end
 
     def suggestion_params
-      params.require(:suggestion).permit(:title, :text, :user_id)
+      params.require(:suggestion).permit(:title, :text, :user_id, :author_id)
     end
   end
 end

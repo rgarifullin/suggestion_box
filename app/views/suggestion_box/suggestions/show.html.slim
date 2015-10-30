@@ -9,7 +9,7 @@ p
 p
   strong
     | Author:
-  = @suggestion.author.try(:email)
+  = @suggestion.user.try(:email)
 = link_to 'Edit', suggestion_box.edit_suggestion_path(@suggestion)
 |  |
 = link_to 'Back', suggestion_box.suggestions_path

@@ -12,7 +12,6 @@ module SuggestionBox
     end
 
     def new
-      @suggestion = Suggestion.new
     end
 
     def edit
@@ -48,7 +47,7 @@ module SuggestionBox
     end
 
     def suggestion_params
-      params.require(:suggestion).permit(:title, :text, :user_id, :author_id)
+      params.require(:suggestion).permit(:title, :text, :user_id)
     end
   end
 end

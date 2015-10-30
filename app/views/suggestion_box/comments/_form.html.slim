@@ -2,7 +2,7 @@
   = f.input :comment, label: false, input_html: { class: 'form-control' }, placeholder: 'Введите комментарий'
   = f.hidden_field :commentable_id, value: commentable.id
   = f.hidden_field :commentable_type, value: commentable.class
-  = f.hidden_field :author_id, value: current_user.try(:id)
+  = f.hidden_field :user_id, value: current_user.try(:id)
 
   = button_tag type: :submit, class: 'btn btn-success' do
     span Отправить

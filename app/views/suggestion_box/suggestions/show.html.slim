@@ -9,7 +9,7 @@ p
 p
   strong
     | Author:
-  = @suggestion.user.try(:email)
+  = " #{@suggestion.user.try(:email)}"
 = link_to 'Edit', suggestion_box.edit_suggestion_path(@suggestion)
 |  |
 = link_to 'Back', suggestion_box.suggestions_path
@@ -18,8 +18,7 @@ h4
   | Комментарии
 i.fa.fa-thumbs-up
 i.fa.fa-thumbs-down
-/= current_user.id
-/ #comments
-/   = render @suggestion.comments
+#comments
+  = render @suggestion.comments
 
-/ = render partial: 'suggestion_box/comments/form', locals: {commentable: @suggestion}
+= render partial: 'suggestion_box/comments/form', locals: {commentable: @suggestion}

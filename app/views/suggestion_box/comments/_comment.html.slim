@@ -1,3 +1,6 @@
 div class="comment_#{comment.id}"
   p = comment.comment
-  = link_to "Удалить", [comment.commentable, comment], method: :delete, data: {confirm: "Вы уверены?"}, remote: true
+  p
+    b Author:
+    = " #{comment.user.try(:email)}"
+  = link_to "Удалить", suggestion_box.suggestion_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "Вы уверены?"}, remote: true

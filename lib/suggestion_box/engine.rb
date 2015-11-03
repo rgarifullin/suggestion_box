@@ -3,7 +3,7 @@ module SuggestionBox
     isolate_namespace SuggestionBox
     initializer "suggestion_box.url_helpers" do
       ActiveSupport.on_load(:action_controller) do
-        helper Rails.application.routes.url_helpers
+        helper SuggestionBox::ApplicationHelper
       end
     end
   end

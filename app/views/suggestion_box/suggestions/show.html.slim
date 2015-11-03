@@ -14,10 +14,15 @@ p
 |  |
 = link_to 'Back', suggestion_box.suggestions_path
 
+br
+= link_to suggestion_box.like_suggestion_path(@suggestion), :remote => true, method: :put, class: 'vpos' do
+  div.btn.btn-success class="vcount-#{@suggestion.id}"
+    = @suggestion.get_upvotes.size
+= link_to suggestion_box.dislike_suggestion_path(@suggestion), :remote => true, method: :put, class: 'npos' do
+  div.btn.btn-danger class="ncount-#{@suggestion.id}"
+    = @suggestion.get_downvotes.size
 h4
   | Комментарии
-i.fa.fa-thumbs-up
-i.fa.fa-thumbs-down
 #comments
   = render @suggestion.comments
 

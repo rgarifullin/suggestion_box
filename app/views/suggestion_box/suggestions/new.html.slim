@@ -1,15 +1,10 @@
 h1
   | New Suggestion
-= form_for SuggestionBox::Suggestion.new, url: suggestion_box.suggestions_path do |f|
-  .field
-    = f.label :title
-    br
-    = f.text_field :title
-  .field
-    = f.label :text
-    br
-    = f.text_area :text
+= simple_form_for SuggestionBox::Suggestion.new, url: suggestion_box.suggestions_path do |f|
+  = f.input :title, input_html: { class: 'form-control' }
+  = f.input :text, input_html: { class: 'form-control' }
   = f.hidden_field :user_id, value: current_user.try(:id)
-  .actions
-    = f.submit
+  = button_tag type: :submit, class: 'btn btn-success' do
+    span Create suggestion
+
 = link_to 'Back', suggestion_box.suggestions_path

@@ -1,6 +1,4 @@
-p#notice
-  = notice
-h1
+h1 style="margin-top: 69px"
   | Listing Suggestions
 table
   thead
@@ -18,10 +16,10 @@ table
         td
           = suggestion.text
         td
-          = link_to 'Show', suggestion
-        td
-          = link_to 'Edit', edit_suggestion_path(suggestion)
-        td
-          = link_to 'Destroy', suggestion, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Show', suggestion_box.suggestion_path(suggestion)
+          | |
+          = link_to 'Edit', suggestion_box.edit_suggestion_path(suggestion)
+          | |
+          = link_to 'Destroy', suggestion_box.suggestion_path(suggestion), method: :delete, data: { confirm: 'Are you sure?' }
 br
-= link_to 'New Suggestion', new_suggestion_path
+= link_to 'New Suggestion', suggestion_box.new_suggestion_path

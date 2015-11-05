@@ -1,0 +1,4 @@
+$('.vpos').bind('ajax:success', function() {
+ $('.vcount-<%= @suggestion.id %>').html('<%=@suggestion.get_upvotes.size.to_s %>');
+ $('.ncount-<%= @suggestion.id %>').html('<%=escape_javascript @suggestion.get_downvotes.size.to_s %>');
+});

@@ -4,6 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 require "suggestion_box"
+require "devise"
 require "jquery-rails"
 
 module Dummy

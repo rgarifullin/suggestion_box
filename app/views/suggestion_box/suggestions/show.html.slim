@@ -1,6 +1,4 @@
-p#notice
-  = notice
-p
+p style="margin-top: 69px"
   strong
     | Title:
   = @suggestion.title
@@ -8,10 +6,21 @@ p
   strong
     | Text:
   = @suggestion.text
-= link_to 'Edit', edit_suggestion_path(@suggestion)
+p
+  strong
+    | Author:
+  = " #{@suggestion.user.try(:email)}"
+= link_to 'Edit', suggestion_box.edit_suggestion_path(@suggestion)
 |  |
-= link_to 'Back', suggestions_path
+= link_to 'Back', suggestion_box.suggestions_path
 
+br
+= link_to suggestion_box.like_suggestion_path(@suggestion), :remote => true, method: :put, class: 'vpos' do
+  div.btn.btn-success class="vcount-#{@suggestion.id}"
+    = @suggestion.get_upvotes.size
+= link_to suggestion_box.dislike_suggestion_path(@suggestion), :remote => true, method: :put, class: 'npos' do
+  div.btn.btn-danger class="ncount-#{@suggestion.id}"
+    = @suggestion.get_downvotes.size
 h4
   | Комментарии
 #comments

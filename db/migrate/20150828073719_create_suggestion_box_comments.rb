@@ -1,4 +1,4 @@
-class CreateComments < ActiveRecord::Migration
+class CreateSuggestionBoxComments < ActiveRecord::Migration
   def self.up
     create_table :suggestion_box_comments do |t|
       t.string :title, :limit => 50, :default => ""

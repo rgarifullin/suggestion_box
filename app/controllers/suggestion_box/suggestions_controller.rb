@@ -2,7 +2,7 @@ require_dependency "suggestion_box/application_controller"
 
 module SuggestionBox
   class SuggestionsController < ApplicationController
-    before_action :set_suggestion, only: [:show, :edit, :update, :destroy]
+    before_action :set_suggestion, only: [:show, :edit, :update, :destroy, :like, :dislike]
 
     def index
       @suggestions = Suggestion.all
@@ -12,7 +12,6 @@ module SuggestionBox
     end
 
     def new
-      @suggestion = Suggestion.new
     end
 
     def edit
@@ -39,6 +38,32 @@ module SuggestionBox
     def destroy
       @suggestion.destroy
       redirect_to suggestions_url, notice: 'Suggestion was successfully destroyed.'
+    end
+
+    def like
+      respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { head :no_content }
+      format.js { render :layout => false }
+        unless @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
+        @suggestion.liked_by current_user
+      else
+        @suggestion.unliked_by current_user
+      end
+     end
+    end
+
+    def dislike
+      respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { head :no_content }
+      format.js { render :layout => false }
+        unless @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
+        @suggestion.disliked_by current_user
+      else
+        @suggestion.undisliked_by current_user
+      end
+     end
     end
 
     private

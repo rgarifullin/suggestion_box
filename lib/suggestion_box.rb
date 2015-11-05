@@ -5,6 +5,8 @@ require 'simple_form'
 require 'jquery-rails'
 require 'byebug'
 require 'devise'
+require 'acts_as_votable'
 
 module SuggestionBox
+  mattr_accessor :author_class
 end

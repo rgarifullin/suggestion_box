@@ -1,6 +1,11 @@
 div class="comment_#{comment.id}"
-  p = comment.comment
-  p
-    b Author:
-    = " #{comment.user.try(:email)}"
-  = link_to "Удалить", suggestion_box.suggestion_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "Вы уверены?"}, remote: true
+  ul.media-list
+    li.media
+      .media-body
+        span.text-muted.pull-right
+          small.text-muted = "#{time_ago_in_words(comment.created_at)} ago "
+          = link_to suggestion_box.suggestion_comment_path(comment.commentable, comment), method: :delete, data: {confirm: "Are you sure?"}, remote: true do
+            .glyphicon.glyphicon-remove
+        strong.text-success = comment.user.try(:email)
+        p
+          = comment.comment

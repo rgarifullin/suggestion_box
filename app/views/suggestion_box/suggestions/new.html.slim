@@ -5,6 +5,6 @@ h1 style="margin-top: 69px"
   = f.input :text, input_html: { class: 'form-control' }
   = f.hidden_field :user_id, value: current_user.try(:id)
   = button_tag type: :submit, class: 'btn btn-success' do
-    span Create suggestion
-
-= link_to 'Back', suggestion_box.suggestions_path
+    span Create
+  = link_to suggestion_box.suggestions_path, class: 'btn btn-danger' do
+    |Cancel

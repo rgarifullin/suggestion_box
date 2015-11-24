@@ -1,3 +1,5 @@
 = SuggestionBox
 
 This project rocks and uses MIT-LICENSE.
+
+#to routes.rb - mount SuggestionBox::Engine, at: '/suggestion_box'

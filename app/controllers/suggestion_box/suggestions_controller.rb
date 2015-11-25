@@ -19,6 +19,7 @@ module SuggestionBox
 
     def create
       @suggestion = Suggestion.new(suggestion_params)
+      @suggestion.user_id = nil if @suggestion.anonymous
 
       if @suggestion.save
         redirect_to @suggestion, notice: 'Suggestion was successfully created.'
@@ -73,7 +74,7 @@ module SuggestionBox
     end
 
     def suggestion_params
-      params.require(:suggestion).permit(:title, :text, :user_id)
+      params.require(:suggestion).permit(:title, :text, :user_id, :anonymous)
     end
   end
 end

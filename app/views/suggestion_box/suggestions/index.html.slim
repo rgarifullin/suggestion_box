@@ -6,15 +6,18 @@ table.table.forum.table-striped
     tr
       th
         h3 Title
+      th.cell-stat.text-center.hidden-xs.hidden-sm Status
       th.cell-stat.text-center.hidden-xs.hidden-sm Comments
       th.cell-stat.text-center.hidden-xs.hidden-sm Likes/Dislikes
-      th.cell-stat-2x.hidden-xs.hidden-sm Last Comment
+      th.cell-stat-2x.text-center.hidden-xs.hidden-sm Last Comment
   tbody
     - @suggestions.each do |suggestion|
       tr
         td
           h4
             = link_to suggestion.title, suggestion_box.suggestion_path(suggestion)
+        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
+          = suggestion.status
         td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
           = suggestion.comments.size
         td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"

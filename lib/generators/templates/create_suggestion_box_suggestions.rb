@@ -5,6 +5,7 @@ class CreateSuggestionBoxSuggestions < ActiveRecord::Migration
       t.text :text
       t.integer :user_id
       t.boolean :anonymous
+      t.integer :status, default: 0
 
       t.timestamps null: false
     end

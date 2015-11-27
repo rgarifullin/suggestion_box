@@ -12,6 +12,6 @@ module SuggestionBox
     #acts_as_voteable
 
     # NOTE: Comments belong to a user
-    belongs_to :user
+    belongs_to :user, class_name: SuggestionBox.author_class || 'User'
   end
 end

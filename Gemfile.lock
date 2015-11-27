@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    suggestion_box (0.0.2)
+    suggestion_box (0.0.3)
       acts_as_commentable
       acts_as_votable (~> 0.10.0)
       devise

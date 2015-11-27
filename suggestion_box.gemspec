@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form"
   s.add_dependency "jquery-rails"
   s.add_dependency "devise"
+  s.add_dependency "cancancan"
   s.add_dependency 'acts_as_votable', '~> 0.10.0'
 
   s.add_development_dependency "sqlite3"

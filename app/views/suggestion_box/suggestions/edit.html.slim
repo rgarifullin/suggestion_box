@@ -3,6 +3,8 @@ h1 style="margin-top: 69px"
 = simple_form_for @suggestion, url: suggestion_box.suggestion_path(@suggestion) do |f|
   = f.input :title, input_html: { class: 'form-control' }
   = f.input :text, input_html: { class: 'form-control' }
+  - if can? :manage, :all
+    = f.input :status
   = button_tag type: :submit, class: 'btn btn-success' do
     span Edit
   = link_to suggestion_box.suggestions_path, class: 'btn btn-danger' do

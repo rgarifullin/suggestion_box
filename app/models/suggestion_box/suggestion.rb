@@ -4,5 +4,12 @@ module SuggestionBox
     acts_as_votable
 
     belongs_to :user, class_name: SuggestionBox.author_class || 'User'
+
+    enum status:{
+      discussion: 0,
+      accepted: 1,
+      declined: 2,
+      done: 3
+    }
   end
 end

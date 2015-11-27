@@ -2,6 +2,8 @@ require_dependency "suggestion_box/application_controller"
 
 module SuggestionBox
   class SuggestionsController < ApplicationController
+    load_and_authorize_resource class: SuggestionBox::Suggestion
+
     before_action :set_suggestion, only: [:show, :edit, :update, :destroy, :like, :dislike]
 
     def index
@@ -46,10 +48,10 @@ module SuggestionBox
       format.html { redirect_to :back }
       format.json { head :no_content }
       format.js { render :layout => false }
-        unless @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
-        @suggestion.liked_by current_user
-      else
+      if @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
         @suggestion.unliked_by current_user
+      else
+        @suggestion.liked_by current_user
       end
      end
     end
@@ -59,10 +61,10 @@ module SuggestionBox
       format.html { redirect_to :back }
       format.json { head :no_content }
       format.js { render :layout => false }
-        unless @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
-        @suggestion.disliked_by current_user
-      else
+      if @suggestion.votes_for.map(&:voter_id).include?(current_user.id)
         @suggestion.undisliked_by current_user
+      else
+        @suggestion.disliked_by current_user
       end
      end
     end
@@ -74,7 +76,7 @@ module SuggestionBox
     end
 
     def suggestion_params
-      params.require(:suggestion).permit(:title, :text, :user_id, :anonymous)
+      params.require(:suggestion).permit(:title, :text, :user_id, :anonymous, :status)
     end
   end
 end

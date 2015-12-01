@@ -1,10 +1,15 @@
 h1 style="margin-top: 69px"
   | Editing Suggestion
-= simple_form_for @suggestion, url: suggestion_box.suggestion_path(@suggestion) do |f|
+= simple_nested_form_for @suggestion, url: suggestion_box.suggestion_path(@suggestion) do |f|
   = f.input :title, input_html: { class: 'form-control' }
   = f.input :text, input_html: { class: 'form-control' }
   - if can? :manage, :all
     = f.input :status
+  = f.fields_for :photos do |p|
+    = p.input :image, as: :file, label: false
+    = image_tag p.object.image.thumb.url if p.object.image
+    = p.link_to_remove 'Remove this photo'
+  p = f.link_to_add 'Add photo', :photos
   = button_tag type: :submit, class: 'btn btn-success' do
     span Edit
   = link_to suggestion_box.suggestions_path, class: 'btn btn-danger' do

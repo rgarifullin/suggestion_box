@@ -3,3 +3,7 @@
 This project rocks and uses MIT-LICENSE.
 
 #to routes.rb - mount SuggestionBox::Engine, at: '/suggestion_box'
+
+And then add it to the Asset Pipeline in the application.js file:
+
+//= require jquery_nested_form

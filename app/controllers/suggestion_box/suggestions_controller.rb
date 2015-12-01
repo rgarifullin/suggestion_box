@@ -7,7 +7,7 @@ module SuggestionBox
     before_action :set_suggestion, only: [:show, :edit, :update, :destroy, :like, :dislike]
 
     def index
-      @suggestions = Suggestion.all
+      @suggestions = Suggestion.all.includes(:comments)
     end
 
     def show
@@ -76,7 +76,7 @@ module SuggestionBox
     end
 
     def suggestion_params
-      params.require(:suggestion).permit(:title, :text, :user_id, :anonymous, :status)
+      params.require(:suggestion).permit(:title, :text, :user_id, :anonymous, :status, photos_attributes: [:image, :_destroy])
     end
   end
 end

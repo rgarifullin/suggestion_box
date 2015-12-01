@@ -14,6 +14,14 @@
 
 p
   = @suggestion.text
+- @suggestion.photos.each do |photo|
+  span data-toggle='modal' data-target="#modal_id_#{photo.id}"
+    = image_tag(photo.image.thumb.url)
+  div.modal.fade id="modal_id_#{photo.id}" role="dialog" aria-hidden="true"
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-body
+          = image_tag(photo.image.url)
 p
   small
     | Author:

@@ -23,6 +23,7 @@ module SuggestionBox
         migration_template "acts_as_votable_migration.rb", "db/migrate/acts_as_votable_migration.rb"
         migration_template "create_suggestion_box_suggestions.rb", "db/migrate/create_suggestion_box_suggestions.rb"
         migration_template "create_suggestion_box_comments.rb", "db/migrate/create_suggestion_box_comments.rb"
+        migration_template "create_suggestion_box_photos.rb", "db/migrate/create_suggestion_box_photos.rb"
       end
     end
   end

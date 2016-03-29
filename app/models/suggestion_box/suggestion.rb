@@ -4,7 +4,7 @@ module SuggestionBox
     acts_as_votable
 
     has_many :photos, class_name: 'SuggestionBox::Photo', dependent: :destroy
-    accepts_nested_attributes_for :photos, allow_destroy: true
+    accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: proc { |attributes| attributes['image'].nil? }
     belongs_to :user, class_name: SuggestionBox.author_class || 'User'
 
     validates_length_of :photos, maximum: 5

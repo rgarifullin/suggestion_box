@@ -1,0 +1,34 @@
+table.table.forum.table-striped.pretty
+  thead
+    tr
+      th
+        h3
+          = sortable 'title'
+      th.cell-stat.text-center.hidden-xs.hidden-sm
+        = sortable 'status'
+      th.cell-stat.text-center.hidden-xs.hidden-sm
+        = sortable 'comments'
+      th.cell-stat.text-center.hidden-xs.hidden-sm
+        = sortable 'likes', 'Likes/Dislikes'
+      th.cell-stat-2x.text-center.hidden-xs.hidden-sm
+        = sortable 'last_comment'
+  tbody
+    - @suggestions.each do |suggestion|
+      tr
+        td
+          h4
+            = link_to suggestion.title, suggestion_box.suggestion_path(suggestion)
+        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
+          = suggestion.status
+        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
+          = suggestion.comments.size
+        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
+          = suggestion.get_upvotes.size
+          |/
+          = suggestion.get_downvotes.size
+        td.hidden-xs.hidden-sm
+          = suggestion.comments.last.try(:user).try(:email)
+          br/
+          small
+            - if suggestion.comments.last
+              = "#{time_ago_in_words(suggestion.comments.last.created_at)} ago"

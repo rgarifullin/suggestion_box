@@ -16,5 +16,9 @@ module SuggestionBox
       declined: 2,
       done: 3
     }
+
+    def self.filter(status = '')
+      (status.nil? || status.empty?) ? all : where(status: status)
+    end
   end
 end

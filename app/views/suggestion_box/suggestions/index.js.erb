@@ -1,0 +1,3 @@
+$('.suggestions_filter').on('ajax:success', function() {
+  $('#suggestions').html('<%= j render partial: 'suggestions', locals: { suggestions: @suggestions } %>');
+});

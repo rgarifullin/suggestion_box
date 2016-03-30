@@ -7,7 +7,8 @@ module SuggestionBox
     before_action :set_suggestion, only: [:show, :edit, :update, :destroy, :like, :dislike]
 
     def index
-      @suggestions = Suggestion.all.includes(:comments)
+      @suggestions = Suggestion.filter(params[:status]).includes(:comments)
+      @suggestions = SortService.new(@suggestions, params).sort if params[:sort]
     end
 
     def show

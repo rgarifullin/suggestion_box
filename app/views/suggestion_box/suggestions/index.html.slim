@@ -1,35 +1,18 @@
 .page-header.page-heading
   h1.pull-left Suggestions
   .clearfix
-table.table.forum.table-striped
-  thead
-    tr
-      th
-        h3 Title
-      th.cell-stat.text-center.hidden-xs.hidden-sm Status
-      th.cell-stat.text-center.hidden-xs.hidden-sm Comments
-      th.cell-stat.text-center.hidden-xs.hidden-sm Likes/Dislikes
-      th.cell-stat-2x.text-center.hidden-xs.hidden-sm Last Comment
-  tbody
-    - @suggestions.each do |suggestion|
-      tr
-        td
-          h4
-            = link_to suggestion.title, suggestion_box.suggestion_path(suggestion)
-        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
-          = suggestion.status
-        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
-          = suggestion.comments.size
-        td.text-center.hidden-xs.hidden-sm  style="vertical-align: middle"
-          = suggestion.get_upvotes.size
-          |/
-          = suggestion.get_downvotes.size
-        td.hidden-xs.hidden-sm
-          = suggestion.comments.last.try(:user).try(:email)
-          br/
-          small
-            - if suggestion.comments.last
-              = "#{time_ago_in_words(suggestion.comments.last.created_at)} ago"
+
+= form_tag suggestion_box.suggestions_path, method: :get, remote: true, class: 'suggestions_filter' do
+  .form-group
+    .row
+      .col-xs-10.col-md-11
+        = select_tag :status, options_for_select(SuggestionBox::Suggestion.statuses), class: 'form-control', id: 'status-filter', include_blank: true
+      .col-xs-2.col-md-1
+        = submit_tag "Filter", name: nil, class: 'btn btn-default pull-right'
+
+#suggestions
+  = render partial: 'suggestions', locals: { suggestions: @suggestions }
+
 br
   = link_to suggestion_box.new_suggestion_path, class: 'btn btn-success' do
     |New Suggestion
